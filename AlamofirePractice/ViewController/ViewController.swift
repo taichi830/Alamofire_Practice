@@ -29,23 +29,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     private func fetchYouTubeSearchInfo() {
-        let params = ["q": "hikakin"]
+        let params = ["q": "bts"]
         API.shared.request(path: .search, params: params, type: Video.self) { video in
             
             self.videoItems = video.items
-            let id = self.videoItems[0].snippet.channelId
-            self.fetchYouTubeChannelInfo(id: id)
+            self.videoItems.enumerated().forEach { (index,video) in
+                let id = video.snippet.channelId
+                self.fetchYouTubeChannelInfo(id: id, index: index)
+            }
         }
     }
     
     
-    private func fetchYouTubeChannelInfo(id:String) {
+    private func fetchYouTubeChannelInfo(id:String,index:Int) {
         let params = ["id":id]
         API.shared.request(path: .channels, params: params, type: Channel.self) { channel in
-            
-            self.videoItems.forEach { item in
-                item.channel = channel
-            }
+            self.videoItems[index].channel = channel
             self.VideoListTableView.reloadData()
         }
     }
