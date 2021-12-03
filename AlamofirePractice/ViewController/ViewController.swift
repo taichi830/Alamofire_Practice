@@ -31,8 +31,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     private func fetchYouTubeSearchInfo() {
         let params = ["q": "hikakin"]
         API.shared.request(path: .search, params: params, type: Video.self) { video in
+            
             self.videoItems = video.items
-            self.VideoListTableView.reloadData()
             let id = self.videoItems[0].snippet.channelId
             self.fetchYouTubeChannelInfo(id: id)
         }
@@ -42,6 +42,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     private func fetchYouTubeChannelInfo(id:String) {
         let params = ["id":id]
         API.shared.request(path: .channels, params: params, type: Channel.self) { channel in
+            
             self.videoItems.forEach { item in
                 item.channel = channel
             }
