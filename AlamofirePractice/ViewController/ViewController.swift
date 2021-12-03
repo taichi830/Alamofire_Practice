@@ -12,16 +12,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
 
-    @IBOutlet weak var VideoListTableView: UITableView!
+    @IBOutlet weak var videoListTableView: UITableView!
     
     private var videoItems = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        VideoListTableView.delegate = self
-        VideoListTableView.dataSource = self
-        VideoListTableView.register(UINib(nibName: "VideoListViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        VideoListTableView.rowHeight =  UITableView.automaticDimension
+        videoListTableView.delegate = self
+        videoListTableView.dataSource = self
+        videoListTableView.register(UINib(nibName: "VideoListViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        videoListTableView.rowHeight =  UITableView.automaticDimension
         
         fetchYouTubeSearchInfo()
     }
@@ -29,7 +29,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     private func fetchYouTubeSearchInfo() {
-        let params = ["q": "bts"]
+        let params = ["q": "hikakin"]
         API.shared.request(path: .search, params: params, type: Video.self) { video in
             
             self.videoItems = video.items
@@ -45,7 +45,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let params = ["id":id]
         API.shared.request(path: .channels, params: params, type: Channel.self) { channel in
             self.videoItems[index].channel = channel
-            self.VideoListTableView.reloadData()
+            self.videoListTableView.reloadData()
         }
     }
     
