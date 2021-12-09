@@ -5,6 +5,9 @@ target 'AlamofirePractice' do
   
   pod 'Alamofire'
   pod 'Nuke'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'PKHUD'
   
 
   target 'AlamofirePracticeTests' do

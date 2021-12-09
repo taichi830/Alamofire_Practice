@@ -16,8 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EhH-Nj-nHY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YWW-Cm-pt3"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vR4-E9-pMm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -25,12 +32,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vR4-E9-pMm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1nB-1k-BOa"/>
+                            <constraint firstItem="EhH-Nj-nHY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1uA-hq-KcB"/>
+                            <constraint firstItem="EhH-Nj-nHY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6iA-cG-5wW"/>
+                            <constraint firstItem="EhH-Nj-nHY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BcP-ti-XwT"/>
                             <constraint firstItem="vR4-E9-pMm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NL0-Vf-bq6"/>
+                            <constraint firstItem="vR4-E9-pMm" firstAttribute="top" secondItem="EhH-Nj-nHY" secondAttribute="bottom" id="QPk-rb-YlT"/>
                             <constraint firstItem="vR4-E9-pMm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ewY-cU-W1y"/>
-                            <constraint firstItem="vR4-E9-pMm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hZ2-up-g22"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="EhH-Nj-nHY" id="7Ln-pp-Ndm"/>
                         <outlet property="videoListTableView" destination="vR4-E9-pMm" id="rye-7f-0t4"/>
                     </connections>
                 </viewController>

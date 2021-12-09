@@ -1,20 +1,38 @@
 PODS:
   - Alamofire (5.4.4)
-  - Nuke (10.5.1)
+  - Nuke (10.5.2)
+  - PKHUD (5.3.0)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - Nuke
+  - PKHUD
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Nuke
+    - PKHUD
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
-  Nuke: 6ae28db7d24c07d040bcc52f6957b32dac23e91b
+  Nuke: 62d6d401e2b3ce553151a6f5e2f9332878710fbd
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 61416a03f57e7a56de75595234b09a500a2c4ffd
+PODFILE CHECKSUM: b6af63ff1a7b9410dbd93f6c728852fd779e556e
 
 COCOAPODS: 1.11.2
