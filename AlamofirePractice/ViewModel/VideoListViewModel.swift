@@ -14,6 +14,7 @@ class VideoListViewModel {
     private let disposeBag = DisposeBag()
     private var searchWordStream = PublishSubject<String>()
     private var eventsStream = PublishSubject<Video?>()
+    private var channelStream = PublishSubject<Channel?>()
     
     var searchWord: AnyObserver<String> {
         searchWordStream.asObserver()
@@ -21,16 +22,32 @@ class VideoListViewModel {
     var events: Observable<Video?> {
         eventsStream.asObservable()
     }
+    var channels: Observable<Channel?> {
+        channelStream.asObservable()
+    }
     
     
     init() {
         
-        searchWordStream.flatMapLatest { word -> Observable<Video?> in
-            print("word:",word)
-            return self.fetchYouTubeSearchInfo(word: word)
+        let fetchYouTubeSearchInfo = searchWordStream.flatMapLatest { word -> Observable<Video?> in
+            let params = ["q": word]
+            return API.shared.fetchVideos(path: .search, params: params, type: Video.self)
         }
-        .subscribe(eventsStream)
-        .disposed(by: disposeBag)
+        
+        let fetchYouTubeChannelInfo = fetchYouTubeSearchInfo.flatMap { video -> Observable<Channel?> in
+            let id = video?.items[1].snippet.channelId
+            print("ssksksksks:",id ?? "hello")
+            let params = ["id": id ?? ""]
+            return API.shared.fetchVideos(path: .channels, params: params, type: Channel.self)
+        }
+        
+        Observable.zip(fetchYouTubeSearchInfo, fetchYouTubeChannelInfo)
+            .subscribe { video,channel in
+                self.eventsStream.onNext(video)
+                self.channelStream.onNext(channel)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     private func fetchYouTubeSearchInfo(word:String) -> Observable<Video?> {
@@ -38,7 +55,8 @@ class VideoListViewModel {
         return API.shared.fetchVideos(path: .search, params: params, type: Video.self)
     }
     
-    private func fetchYouTubeChannelInfo(id:String,index:Int) -> Observable<Video?> {
+    private func fetchYouTubeChannelInfo(video:Video) -> Observable<Channel?> {
+        let id = video.items[0].snippet.channelId
         let params = ["id":id]
         return API.shared.fetchVideos(path: .channels, params: params, type: Channel.self)
     }

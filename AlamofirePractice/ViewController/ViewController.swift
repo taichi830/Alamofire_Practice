@@ -41,16 +41,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             })
             .disposed(by: disposeBag)
         
+        
+        
         viewModel.events.subscribe { [weak self] video in
-            self?.reloadData(video: video!)
+            self?.videoItems = video!.items
+        }
+        .disposed(by: disposeBag)
+        
+        
+        
+        viewModel.channels.subscribe { [weak self] channel in
+            self?.reloadData(channel: channel!)
         }
         .disposed(by: disposeBag)
         
     }
     
-    private func reloadData(video:Video){
-        self.videoItems = video.items
-        self.videoListTableView.reloadData()
+    
+    
+    private func reloadData(channel:Channel){
+        self.videoItems.enumerated().forEach { (index,item) in
+            self.videoItems[index].channel = channel
+            self.videoListTableView.reloadData()
+        }
         HUD.hide()
     }
     

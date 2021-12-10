@@ -20,7 +20,7 @@ class API {
     
     private let baseUrl = "https://www.googleapis.com/youtube/v3/"
     
-    func fetchVideos<T: Decodable>(path: PathType,params: [String:Any], type: T.Type) -> Observable<Video?> {
+    func fetchVideos<T: Decodable>(path: PathType,params: [String:Any], type: T.Type) -> Observable<T?> {
         return Observable.create { observer in
             let path = path.rawValue
             let url = self.baseUrl + path + "?"
@@ -37,7 +37,8 @@ class API {
                         guard let data = response.data else { return }
                         let decoder = JSONDecoder()
                         let value = try decoder.decode(T.self, from: data)
-                        observer.onNext(value as? Video)
+                        print(value)
+                        observer.onNext(value)
                         observer.onCompleted()
                     } catch {
                         print("false",error)
