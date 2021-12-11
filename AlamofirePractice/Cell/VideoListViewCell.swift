@@ -44,11 +44,11 @@ class VideoListViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupVideos(videoItems:Item){
+    func setupVideos(videoItems:Item,channels:Channel){
         if let url = URL(string: videoItems.snippet.thumbnails.high.url ){
             Nuke.loadImage(with: url, into: thumbnailsImageView)
         }
-        if let channelUrl = URL(string: videoItems.channel?.items[0].snippet.thumbnails.high.url ?? ""){
+        if let channelUrl = URL(string: channels.items[0].snippet.thumbnails.high.url ){
             Nuke.loadImage(with: channelUrl, into: channelImageView)
         }
         titleLabel.text = videoItems.snippet.title

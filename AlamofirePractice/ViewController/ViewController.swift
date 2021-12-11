@@ -21,6 +21,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     private let disposeBag = DisposeBag()
     private let viewModel = VideoListViewModel()
     private var videoItems = [Item]()
+    private var channels = [Channel]()
     
     
     override func viewDidLoad() {
@@ -44,7 +45,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         
         viewModel.events.subscribe { [weak self] video in
-            self?.videoItems = video!.items
+            self?.setVideos(video: video!)
         }
         .disposed(by: disposeBag)
         
@@ -58,14 +59,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     
+    private func setVideos(video:Video){
+        self.videoItems = video.items
+        self.videoItems.enumerated().forEach { (index,item) in
+            self.viewModel.channelID.onNext(item.snippet.channelId)
+        }
+    }
+    
     
     private func reloadData(channel:Channel){
-        self.videoItems.enumerated().forEach { (index,item) in
-            self.videoItems[index].channel = channel
+        self.channels.append(channel)
+        if channels.count == videoItems.count {
             self.videoListTableView.reloadData()
+            HUD.hide()
         }
-        HUD.hide()
     }
+    
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -84,7 +93,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VideoListViewCell
-        cell.setupVideos(videoItems: videoItems[indexPath.row])
+        cell.setupVideos(videoItems: videoItems[indexPath.row], channels: channels[indexPath.row])
         return cell
     }
     
