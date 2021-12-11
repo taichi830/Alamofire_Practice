@@ -21,6 +21,7 @@
 		CE085FAE2757E66000D6AE2D /* VideoListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE085FAC2757E66000D6AE2D /* VideoListViewCell.xib */; };
 		CE085FB12758566300D6AE2D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE085FB02758566300D6AE2D /* Video.swift */; };
 		CE085FB327586F1700D6AE2D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE085FB227586F1700D6AE2D /* Channel.swift */; };
+		CE2E27DA2761C270002D0E41 /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E27D92761C270002D0E41 /* VideoListViewModel.swift */; };
 		CE854BD42758A6990089BEF4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE854BD32758A6990089BEF4 /* API.swift */; };
 		ECEAFCB716505618BC235E10 /* libPods-AlamofirePracticeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F21597139376B7CB115ADB /* libPods-AlamofirePracticeTests.a */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		CE085FAC2757E66000D6AE2D /* VideoListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListViewCell.xib; sourceTree = "<group>"; };
 		CE085FB02758566300D6AE2D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CE085FB227586F1700D6AE2D /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		CE2E27D92761C270002D0E41 /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
 		CE854BD32758A6990089BEF4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D2F21597139376B7CB115ADB /* libPods-AlamofirePracticeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AlamofirePracticeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CE854BD22758A6760089BEF4 /* API */,
+				CE2E27D82761C215002D0E41 /* ViewModel */,
 				CE085FAF2758564C00D6AE2D /* Model */,
 				CE854BD72758AF010089BEF4 /* ViewController */,
 				CE854BD62758AEE50089BEF4 /* Storyboard */,
@@ -198,6 +201,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CE2E27D82761C215002D0E41 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE2E27D92761C270002D0E41 /* VideoListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CE854BD22758A6760089BEF4 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +245,7 @@
 				CE085F6F2757D2CA00D6AE2D /* Sources */,
 				CE085F702757D2CA00D6AE2D /* Frameworks */,
 				CE085F712757D2CA00D6AE2D /* Resources */,
+				1E05BB3AA15DB4FBECDDC50E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,6 +283,7 @@
 				CE085F902757D2CE00D6AE2D /* Sources */,
 				CE085F912757D2CE00D6AE2D /* Frameworks */,
 				CE085F922757D2CE00D6AE2D /* Resources */,
+				551912853F529C606393EEFE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -353,6 +366,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1E05BB3AA15DB4FBECDDC50E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice/Pods-AlamofirePractice-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice/Pods-AlamofirePractice-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice/Pods-AlamofirePractice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		551912853F529C606393EEFE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice-AlamofirePracticeUITests/Pods-AlamofirePractice-AlamofirePracticeUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice-AlamofirePracticeUITests/Pods-AlamofirePractice-AlamofirePracticeUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AlamofirePractice-AlamofirePracticeUITests/Pods-AlamofirePractice-AlamofirePracticeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		829AAFE627F1677E9C04A09F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +475,7 @@
 			files = (
 				CE085FAD2757E66000D6AE2D /* VideoListViewCell.swift in Sources */,
 				CE854BD42758A6990089BEF4 /* API.swift in Sources */,
+				CE2E27DA2761C270002D0E41 /* VideoListViewModel.swift in Sources */,
 				CE085FB327586F1700D6AE2D /* Channel.swift in Sources */,
 				CE085F7B2757D2CA00D6AE2D /* ViewController.swift in Sources */,
 				CE085F772757D2CA00D6AE2D /* AppDelegate.swift in Sources */,
