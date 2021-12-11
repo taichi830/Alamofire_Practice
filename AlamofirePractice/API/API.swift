@@ -37,7 +37,6 @@ class API {
                         guard let data = response.data else { return }
                         let decoder = JSONDecoder()
                         let value = try decoder.decode(T.self, from: data)
-                        print("skksksksk",value)
                         observer.onNext(value)
                         observer.onCompleted()
                     } catch {

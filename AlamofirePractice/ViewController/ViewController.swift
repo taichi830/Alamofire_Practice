@@ -36,6 +36,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         searchBar.rx.searchButtonClicked.asDriver(onErrorJustReturn: ())
             .drive(onNext: { [weak self] in
                 HUD.flash(.progress)
+                self?.videoItems.removeAll()
+                self?.channels.removeAll()
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.showsCancelButton = false
                 self?.viewModel.searchWord.onNext(self?.searchBar.text ?? "")
@@ -61,7 +63,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     private func setVideos(video:Video){
         self.videoItems = video.items
-        self.videoItems.enumerated().forEach { (index,item) in
+        self.videoItems.forEach { item in
             self.viewModel.channelID.onNext(item.snippet.channelId)
         }
     }

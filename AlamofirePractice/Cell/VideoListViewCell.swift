@@ -10,18 +10,18 @@ import Nuke
 
 class VideoListViewCell: UITableViewCell {
 
-    var videoItem: Item? {
-        didSet {
-            if let url = URL(string: videoItem?.snippet.thumbnails.high.url ?? ""){
-                Nuke.loadImage(with: url, into: thumbnailsImageView)
-            }
-            if let channelUrl = URL(string: videoItem?.channel?.items[0].snippet.thumbnails.high.url ?? ""){
-                Nuke.loadImage(with: channelUrl, into: channelImageView)
-            }
-            titleLabel.text = videoItem?.snippet.title
-            descriptionLabel.text = videoItem?.snippet.description
-        }
-    }
+//    var videoItem: Item? {
+//        didSet {
+//            if let url = URL(string: videoItem?.snippet.thumbnails.high.url ?? ""){
+//                Nuke.loadImage(with: url, into: thumbnailsImageView)
+//            }
+//            if let channelUrl = URL(string: videoItem?.channel?.items[0].snippet.thumbnails.high.url ?? ""){
+//                Nuke.loadImage(with: channelUrl, into: channelImageView)
+//            }
+//            titleLabel.text = videoItem?.snippet.title
+//            descriptionLabel.text = videoItem?.snippet.description
+//        }
+//    }
     
     @IBOutlet weak var thumbnailsImageView: UIImageView!
     

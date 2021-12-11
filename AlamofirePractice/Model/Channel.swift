@@ -8,11 +8,11 @@
 import Foundation
 
 class Channel:Decodable {
-    
     let items:[ChannelItem]
 }
 
 class ChannelItem:Decodable {
+    let id:String
     let snippet:ChannelSnippet
 }
 

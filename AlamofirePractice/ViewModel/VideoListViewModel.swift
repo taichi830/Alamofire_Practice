@@ -41,7 +41,7 @@ class VideoListViewModel {
         .disposed(by: disposeBag)
     
         
-        channelIDStream.flatMap { id -> Observable<Channel?> in
+        channelIDStream.concatMap { id -> Observable<Channel?> in
             let params = ["id":id]
             return API.shared.fetchVideos(path: .channels, params: params, type: Channel.self)
         }
