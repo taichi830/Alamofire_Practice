@@ -1,3 +1,8 @@
-YouTube Apiを用いて投稿を表示しました。
+YouTube Apiを用いてYouTube検索アプリを作成しました。
 
-https://user-images.githubusercontent.com/69893326/144636700-0f5b4c1c-6eb9-4005-9f79-602c9f15fa51.mp4
+アーキテクチャ - MVVM
+
+使用ライブラリ - RxSwift RxCocoa Alamofire Nuke PKHUD
+
+https://user-images.githubusercontent.com/69893326/145700020-d6c50913-2671-4521-8574-3889f91f079d.mp4
+
